@@ -1,20 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import Dashboard from './components/Dashboard';
+import StudyPlanDetail from './components/StudyPlanDetail';
+import './App.css'; // For the 3D flashcard effect
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-       <div className="flex items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">
-        Hello, World!
-      </h1>
-    </div>
-    </>
-  )
+    <Router>
+      <div className="min-h-screen bg-slate-50">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/plan/:id" element={<StudyPlanDetail />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
